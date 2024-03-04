@@ -1,0 +1,94 @@
+extends ../layouts/main-layout.pug
+
+block styles
+  //- mapbox
+  link(href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet")
+  //- mapbox draw tool
+  link(rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css'
+    type='text/css')
+  link(rel="stylesheet" href="/css/main.css")
+
+block content
+  section.container
+    .controller__content
+      .controller__title
+        h1
+          a(href="./login" style="text-decoration: none; color: black;") Web quản lý
+        p Thiết bị hỗ trợ kiểm soát khí thải đầu ra xe máy
+      .chart__content
+        .item-1.item 
+          #map(style="height: 100%;")
+        .item-2.item
+          canvas#myChart1
+        .item-3.item
+          canvas#myChart2
+        .item-4.item
+          canvas#myChart3
+        .item-5.item
+          canvas#myChart4
+      .setting__conttent
+        div 
+          a.button--yellow(data-bs-toggle="modal" href="#staticBackdrop") Cài đặt
+        div 
+          a.button--yellow(href="/api/v1/login") Đăng xuất
+
+  //- Modal
+  div.modal.fade#staticBackdrop(data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true")
+    .modal-dialog
+      .modal-content
+        .modal-header
+          h5.modal-title#staticBackdropLabel Modal title
+          button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+        .modal-body
+          form(action="../update-user/2" method="post").cover__form 
+            div.input-group.mb-3
+              input(name="userName" type="text" placeholder="Tên người dùng").form-control
+            div.input-group.mb-3
+              input(name="numberPhone" type="tel" placeholder="Số điện thoại").form-control
+            div.input-group.mb-3
+              input(name="password" type="password" placeholder="Nhập khẩu").form-control
+            .modal-footer
+              button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close 
+              button.btn.btn-primary(type="submit" data-bs-dismiss="modal") Save
+
+  //- js
+  script(src="/js/jquery-3.6.0.js") 
+  //- jquery waypoin
+  script(src="/js/jquery.waypoints.min.js") 
+
+  script.
+    const emissionData = !{JSON.stringify(emission)};
+
+  //- chart.js
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  script(src="/js/chart.js")
+  //- Owl Carouse js
+  script(src="/js/owl.carousel.js")
+  //- script.
+  //-   $('.owl-carousel').owlCarousel({
+  //-     loop: true,
+  //-     margin: 10,
+  //-     nav: false,
+  //-     dots: false,
+  //-     responsive: {
+  //-       0: {
+  //-         items: 1
+  //-       },
+  //-       768: {
+  //-         items: 2
+  //-       },
+  //-     }
+  //-   })
+
+  //- BS5
+  script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous") 
+  //- mapbox
+  script(src="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js") 
+  script(src="/js/mapbox.js" defer) 
+  //- mapbox draw tool
+  script(src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.js' defer) 
+  //- main js
+  script(src="/js/main.js") 

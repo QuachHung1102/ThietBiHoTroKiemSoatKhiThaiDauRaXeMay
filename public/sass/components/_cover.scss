@@ -1,0 +1,54 @@
+.cover {
+  // background-image: url(.././img/cover.jpg);
+  // @extend %backgroundImg;
+  position: relative;
+  border-radius: 16px;
+  align-items: center;
+  background-color: $color-white-0;
+  height: 90%;
+  width: 50%;
+  .cover__content {
+    max-width: 75%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-white-0;
+    .login_content_header {
+      h1 {
+        @include styleText($color-black-0, $fs-2rem, $fw-900);
+        text-align: center;
+      }
+      p {
+        @include styleText($color-black-0, $fs-1rem, $fw-400);
+        text-align: center;
+      }
+    }
+    .cover__form {
+      @include styleFormSearch($color-blue-1, $color-blue-1, $color-blue-1, $color-black-light);
+      .input-group {
+        margin-bottom: 0.5rem;
+        .form-control {
+          font-size: $fs-1rem;
+        }
+      }
+      .button-login {
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: center;
+      }
+    }
+    .login_navigation {
+      display: flex;
+      justify-content: center;
+      font-size: $fs-1rem;
+    }
+  }
+  @include responsive("small") {
+    .cover__content {
+      max-width: 370px;
+      left: 10%;
+    }
+  }
+}

@@ -1,0 +1,93 @@
+// color
+$color-black-0: #000000;
+$color-black-light:#505763;
+$color-white-0: #ffffff;
+$color-white-border-light-1: #e5edf4;
+$color-white-border-light-2: #f6fbff;
+$color-blue-0: #00a9ff;
+$color-blue-1: #cdf5fd;
+$color-red-0:#ec5252;
+$color-red-1:#521822;
+$color-yellow-0: #F9ED32;
+$color-yellow-1:#f4c150;
+$color-orange-0: #EE7214;
+$color-gray-0: #494b50;
+$color-gray-1:rgba(20, 23, 28, 0.05);
+$color-gray-2: #bbb;
+$color-gray-5: #cccccc;
+$color-gray-6: #959595;
+$color-gray-border-dark-1: #56585c;
+$color-red-0: #ec5252;
+$color-pink-0: #ec4b83;
+
+// font-size
+$fs-12: 12px;
+$fs-13: 13px;
+$fs-15: 15px;
+$fs-16: 16px;
+$fs-18: 18px;
+$fs-20: 20px;
+$fs-24: 24px;
+$fs-36: 36px;
+$fs-40: 40px;
+$fs-50: 50px;
+$fs-64: 64px;
+$fs-0-75rem: 0.75rem;
+$fs-1rem: 1rem;
+$fs-1-5rem: 1.5rem;
+$fs-2rem: 2rem;
+$fs-3rem: 3rem;
+$fs-4rem: 4rem;
+$fs-5rem: 5rem;
+
+// font-weight
+$fw-0: normal;
+$fw-400: 400;
+$fw-500: 500;
+$fw-600: 600;
+$fw-700: 700;
+$fw-800: 800;
+$fw-900: 900;
+
+// line-height
+$line-height-0: 1.43;
+$line-height-30: 30px;
+
+// margin
+$mg-5: 5px;
+$mg-10: 10px;
+$mg-20: 20px;
+$mg-25: 25px;
+$mg-30: 30px;
+$mg-32: 32px;
+$mg-40: 40px;
+$mg-50: 50px;
+$mg-60: 60px;
+$mg-70: 70px;
+$mg-80: 80px;
+
+// padding
+$pd-5: 5px;
+$pd-10: 10px;
+$pd-15: 15px;
+$pd-20: 20px;
+$pd-25: 25px;
+$pd-30: 30px;
+$pd-40: 40px;
+$pd-50: 50px;
+$pd-60: 60px;
+$pd-70: 70px;
+$pd-100: 100px;
+
+// border-radius
+$border-radius-2px: 2px;
+$border-radius-15px: 15px;
+$border-radius-55px: 55px;
+// break points
+$breakpoints: (
+  "screen-1": 1350px,
+  "extra-large": 1200px,
+  "large": 992px,
+  "medium": 768px,
+  "small": 576px
+);

@@ -1,0 +1,105 @@
+// Không có tham số
+// @mixin styleText {
+//     color: white;
+//     font-size: 13px;
+// }
+// tính tái sử dụng như cẹc --> ít dùng
+// có tham số
+
+@mixin styleText($color, $fs, $fw) {
+  color: $color;
+  font-size: $fs;
+  font-weight: $fw;
+}
+
+// màu chữ, màu nền, màu border, góc bo, fs, fw, pd-y, pd-x
+@mixin styleButton($color, $bg-color, $border, $border-radius, $fs, $fw, $pd-y, $pd-x) {
+  color: $color;
+  background-color: $bg-color;
+  border: 1px solid $border;
+  font-size: $fs;
+  font-weight: $fw;
+  padding: $pd-y $pd-x;
+  cursor: pointer;
+  border-radius: $border-radius;
+}
+
+// màu chữ, màu nền, màu viền khi hover
+@mixin hoverButton($color-hover, $bg-hover, $border-hover) {
+  color: $color-hover;
+  background-color: $bg-hover;
+  border: 1px solid $border-hover;
+}
+
+// màu nền, màu khi focus, màu viền, màu chữ
+@mixin styleFormSearch($bg-color, $bg-color-focus, $border-coler, $color) {
+  .input-group {
+    background-color: $bg-color;
+    border-radius: 0.375rem;
+    .form-control {
+      background-color: transparent;
+      border-color: $color-blue-1;
+      box-shadow: none;
+      transition: none;
+      color: $color;
+      &::placeholder {
+        color: $color;
+      }
+      &:focus {
+        background-color: $bg-color-focus;
+        border-top-color: $border-coler;
+        border-left-color: $border-coler;
+        border-bottom-color: $border-coler;
+      }
+      &:hover {
+        background-color: $bg-color-focus;
+      }
+      &:focus + .input-group-text {
+        background-color: $color-white-0;
+        border-top-color: $border-coler;
+        border-right-color: $border-coler;
+        border-bottom-color: $border-coler;
+        color: $color-blue-0;
+        &:hover {
+          color: $color-black-0;
+          background-color: $color-blue-0;
+        }
+      }
+    }
+    .input-group-text {
+      background-color: transparent;
+      border-color: $color-blue-0;
+      color: $color-white-0;
+      &:hover {
+        color: $color-white-0;
+        background-color: $color-blue-0;
+      }
+    }
+  }
+}
+
+// @mixin responsive($screen) {
+//   @if map-has-key($map: $breakpoints, $key: $screen) {
+//     $value: map-get(
+//       $map: $breakpoints,
+//       $key: $screen
+//     );
+//     @media screen and (min-width: $value) {
+//       @content;
+//     }
+//   } @else {
+//     @warn "`{$screen}` isn't valid";
+//   }
+// }
+
+@mixin responsive($screen) {
+  @if map-has-key($map: $breakpoints, $key: $screen) {
+      $value: map-get($map: $breakpoints, $key: $screen);
+      @media screen and (max-width: $value) {
+          @content;
+      }
+  }
+  @else {
+      @warn "`{$screen}` isn't valid";
+  }
+}

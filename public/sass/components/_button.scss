@@ -1,0 +1,69 @@
+.button--white {
+  @include styleButton(
+    $color-gray-0,
+    $color-white-0,
+    $color-black-light,
+    $border-radius-55px,
+    $fs-15,
+    $fw-600,
+    $pd-10,
+    $pd-25
+  );
+  text-decoration: none;
+  &:hover {
+    @include hoverButton($color-black-0, transparent, $color-black-0);
+  }
+}
+
+.button--gray {
+  @include styleButton(
+    $color-black-0,
+    $color-gray-1,
+    $color-black-light,
+    $border-radius-2px + 3,
+    $fs-15,
+    $fw-400,
+    $pd-5,
+    $pd-20
+  );
+  text-decoration: none;
+  &:hover {
+    @include hoverButton($color-black-0, transparent, $color-black-0);
+  }
+}
+
+.button--red {
+  @include styleButton($color-white-0, $color-red-0, $color-red-0, 0, $fs-15, $fw-600, $pd-10, $pd-10);
+  text-decoration: none;
+  &:hover {
+    @include hoverButton($color-white-0, $color-red-1, $color-red-1);
+  }
+}
+
+.button--yellow {
+  @include styleButton(
+    $color-white-0,
+    $color-yellow-0,
+    $color-yellow-0,
+    $border-radius-55px,
+    $fs-1rem,
+    $fw-600,
+    $pd-5,
+    $pd-40
+  );
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  column-gap: $pd-10;
+  &:hover {
+    @include hoverButton($color-white-0, $color-yellow-1, $color-yellow-1);
+  }
+}
+
+.button--dropup {
+  text-decoration: none;
+  @include styleButton($color-gray-0, $color-white-0, $color-black-light, 0, $fs-13, $fw-600, $pd-5 + 1, $pd-10);
+  &:hover {
+    @include hoverButton($color-black-0, transparent, $color-black-0);
+  }
+}
