@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(rootDir1, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/api/v1", rootRouter);
+app.use("/", rootRouter);// change to /
 app.use(get404Page);
 
 app.listen(port, () => {

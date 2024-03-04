@@ -5,6 +5,8 @@ const { rootDir1, rootDir2 } = require("../utilities/path");
 const Emission = require("../models/emission_model");
 
 const getControlPage = async (req, res) => {
+  //TODO: add auth check here
+  //rederect to login if not login
   const id = req.params.id;
   Emission.findById(id, (emission) => {
     res.status(200).render("controll/controll", {
