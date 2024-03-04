@@ -1,3 +1,5 @@
+const { format } = require("express/lib/response");
+
 const chart1 = document.getElementById("myChart1");
 const chart2 = document.getElementById("myChart2");
 const chart3 = document.getElementById("myChart3");
@@ -7,6 +9,8 @@ const labels = emissionData.labels;
 console.log(labels);
 console.log(emissionData);
 
+
+//save these to varialble like let chartName1 = new Chart ...
 new Chart(chart1, {
   type: "line",
   data: {
@@ -174,3 +178,17 @@ new Chart(chart4, {
     },
   },
 });
+
+//TODO: add function addData(chart, label, data) and removeData(chart)
+//**
+ * 
+ * @param {*} chart 
+ * @param {HH:MM} label time in HH:MM format
+ * @param {Number} data number co the la array
+ */
+function addData(chart, label, data) {
+
+}
+
+function removeData (chart) {
+}
