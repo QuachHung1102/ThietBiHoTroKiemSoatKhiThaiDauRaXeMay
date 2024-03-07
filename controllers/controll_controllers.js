@@ -12,6 +12,7 @@ const getControlPage = async (req, res) => {
     res.status(200).render("controll/controll", {
       pageTitle: "Quản lý",
       emission,
+      userId: id,
     });
   });
 };
@@ -20,12 +21,13 @@ const updateEmission = async (req, res) => {
   const id = req.params.id;
   const { locat, timeLabel, emissiondt } = req.body;
 
-  Emission.saveLog(id, timeLabel, emissiondt);
   Emission.findById(id, (emission) => {
     let updateEmission = emission;
     updateEmission.location = locat;
-    updateEmission.labels.splice(0, 1);
-    updateEmission.labels.push(timeLabel);
+    if (updateEmission.labels.at(-1) !== timeLabel) {
+      updateEmission.labels.splice(0, 1);
+      updateEmission.labels.push(timeLabel);
+    }
     for (const key in updateEmission.emissions) {
       updateEmission.emissions[key].data.splice(0, 1);
       updateEmission.emissions[key].data.push(emissiondt[key]);
@@ -38,6 +40,7 @@ const updateEmission = async (req, res) => {
     );
 
     updateEmis.save();
+    Emission.saveLog(id, timeLabel, emissiondt);
     res.status(200).render("controll/controll", {
       pageTitle: "Quản lý",
       emissions: updateEmission,
@@ -45,7 +48,25 @@ const updateEmission = async (req, res) => {
   });
 };
 
+const getEmissionToRender = async (req, res) => {
+  const id = req.params.id;
+  try {
+    Emission.findById(id, (emission) => {
+      const label = emission.labels.at(-1);
+      const emissions = emission.emissions.map((e) => {
+        return e.data.at(-1);
+      });
+      const renderData = { label, emissions };
+      res.status(200).json(renderData);
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(`Error: ${error.message}`);
+  }
+};
+
 module.exports = {
   getControlPage,
   updateEmission,
+  getEmissionToRender,
 };

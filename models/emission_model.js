@@ -89,6 +89,7 @@ const Emission = class {
       //   }
       // });
       fs.writeFileSync(pathP1, JSON.stringify(emissionLogList));
+      console.log(`Cập nhật emissionsLogSave thành công`);
     });
   }
 

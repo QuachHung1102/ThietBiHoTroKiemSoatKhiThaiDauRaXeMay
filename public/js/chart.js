@@ -181,24 +181,8 @@ const random1and100 = (x, y) => {
 };
 
 // Data nhận được sẽ có dạng sau
-const data = {
-  label: "03:00",
-  emissions: [
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-    Math.trunc(Math.random() * 100),
-  ],
-};
 
 function addData(chart, newData) {
-  console.log(newData);
   let i = 0;
   chart.data.datasets.forEach((dataset) => {
     dataset.data.shift();
@@ -215,16 +199,16 @@ function changeLabels(label) {
   chart3.update();
   chart4.update();
 }
-function addDataToCharts() {
-  let labelUpdate = Math.trunc(Math.random() * 100);
-  let data1 = [random1and100(), random1and100()];
-  // let data1 = data.emissions.slice(0, 2);
-  let data2 = [random1and100(), random1and100(), random1and100()];
-  // let data2 = data.emissions.slice(2, 5);
-  let data3 = [random1and100(), random1and100(), random1and100()];
-  // let data3 = data.emissions.slice(5, 8);
-  let data4 = [random1and100(), random1and100()];
-  // let data4 = data.emissions.slice(8, 10);
+function addDataToCharts(data) {
+  let labelUpdate = data.label;
+  // let data1 = [random1and100(), random1and100()];
+  let data1 = data.emissions.slice(0, 2);
+  // let data2 = [random1and100(), random1and100(), random1and100()];
+  let data2 = data.emissions.slice(2, 5);
+  // let data3 = [random1and100(), random1and100(), random1and100()];
+  let data3 = data.emissions.slice(5, 8);
+  // let data4 = [random1and100(), random1and100()];
+  let data4 = data.emissions.slice(8, 10);
 
   addData(chart1, data1);
   addData(chart2, data2);
@@ -233,6 +217,15 @@ function addDataToCharts() {
   changeLabels(labelUpdate);
 }
 
+function fetchData() {
+  fetch(`/get-data-to-render/${userID}`) // Gửi yêu cầu GET đến máy chủ để lấy dữ liệu mới
+    .then((response) => response.json())
+    .then((data) => addDataToCharts(data))
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
 setInterval(() => {
-  addDataToCharts();
-}, 3000);
+  fetchData();
+}, 30000);
+
+console.log(userID);
