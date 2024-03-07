@@ -200,6 +200,10 @@ function changeLabels(label) {
   chart4.update();
 }
 function addDataToCharts(data) {
+  console.log(data.alert);
+  if (data.alert == "1") {
+    alert(`Xe đang gặp sự cố!`);
+  }
   let labelUpdate = data.label;
   // let data1 = [random1and100(), random1and100()];
   let data1 = data.emissions.slice(0, 2);
@@ -226,6 +230,4 @@ function fetchData() {
 
 setInterval(() => {
   fetchData();
-}, 30000);
-
-console.log(userID);
+}, 15000);

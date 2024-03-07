@@ -19,11 +19,13 @@ const getControlPage = async (req, res) => {
 
 const updateEmission = async (req, res) => {
   const id = req.params.id;
-  const { locat, timeLabel, emissiondt } = req.body;
+  const { locat, timeLabel, emissiondt, dateLabel, alert } = req.body;
 
   Emission.findById(id, (emission) => {
+    console.log(`alert = ` + alert);
     let updateEmission = emission;
     updateEmission.location = locat;
+    updateEmission.alert = alert;
     if (updateEmission.labels.at(-1) !== timeLabel) {
       updateEmission.labels.splice(0, 1);
       updateEmission.labels.push(timeLabel);
@@ -36,11 +38,12 @@ const updateEmission = async (req, res) => {
       id,
       updateEmission.location,
       updateEmission.labels,
-      updateEmission.emissions
+      updateEmission.emissions,
+      updateEmission.alert
     );
 
     updateEmis.save();
-    Emission.saveLog(id, timeLabel, emissiondt);
+    Emission.saveLog(id, timeLabel, emissiondt, dateLabel);
     res.status(200).render("controll/controll", {
       pageTitle: "Quản lý",
       emissions: updateEmission,
@@ -53,10 +56,12 @@ const getEmissionToRender = async (req, res) => {
   try {
     Emission.findById(id, (emission) => {
       const label = emission.labels.at(-1);
+      const alert = emission.alert;
       const emissions = emission.emissions.map((e) => {
         return e.data.at(-1);
       });
-      const renderData = { label, emissions };
+      const renderData = { label, emissions, alert };
+      console.log(renderData);
       res.status(200).json(renderData);
     });
   } catch (error) {

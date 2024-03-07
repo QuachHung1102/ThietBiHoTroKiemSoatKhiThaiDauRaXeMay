@@ -28,11 +28,12 @@ const getEmissionsLogFromFile = (cb) => {
 };
 
 const Emission = class {
-  constructor(id, location, labels, emissions) {
+  constructor(id, location, labels, emissions, alert) {
     this.id = id;
     this.location = location;
     this.labels = labels;
     this.emissions = emissions;
+    this.alert = alert;
   }
 
   save() {
@@ -62,7 +63,7 @@ const Emission = class {
     });
   }
 
-  static saveLog(id, timeLabel, emissiondt) {
+  static saveLog(id, timeLabel, emissiondt, dateLabel) {
     getEmissionsLogFromFile((emissionLogList) => {
       console.log(`Đây là update`);
       const foundItemIndex = emissionLogList.findIndex(
@@ -72,7 +73,7 @@ const Emission = class {
         // Đối tượng đã tồn tại, cập nhật dữ liệu emission mới
         // emissionLogList[foundItemIndex].emissionsData[timeLabel] = emissiondt;
         const newObj = {
-          [timeLabel]: emissiondt,
+          [`${timeLabel} - ${dateLabel}`]: emissiondt,
         };
         let updateEmission = emissionLogList[foundItemIndex].emissionsData;
         updateEmission = { ...updateEmission, ...newObj };
