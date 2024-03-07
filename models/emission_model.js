@@ -3,9 +3,21 @@ const path = require("path");
 const { rootDir1, rootDir2 } = require("../utilities/path");
 
 const pathP = path.join(rootDir1, "data", "emissionsData.json");
+const pathP1 = path.join(rootDir1, "data", "emissonsLogSave.json");
 
 const getEmissionsFromFile = (cb) => {
   fs.readFile(pathP, (err, fileContent) => {
+    if (err) {
+      console.log(err);
+      cb([]);
+    } else {
+      cb(JSON.parse(fileContent));
+    }
+  });
+};
+
+const getEmissionsLogFromFile = (cb) => {
+  fs.readFile(pathP1, (err, fileContent) => {
     if (err) {
       console.log(err);
       cb([]);
@@ -50,6 +62,36 @@ const Emission = class {
     });
   }
 
+  static saveLog(id, timeLabel, emissiondt) {
+    getEmissionsLogFromFile((emissionLogList) => {
+      console.log(`Đây là update`);
+      const foundItemIndex = emissionLogList.findIndex(
+        (item) => item.id === id
+      );
+      if (foundItemIndex !== -1) {
+        // Đối tượng đã tồn tại, cập nhật dữ liệu emission mới
+        // emissionLogList[foundItemIndex].emissionsData[timeLabel] = emissiondt;
+        const newObj = {
+          [timeLabel]: emissiondt,
+        };
+        let updateEmission = emissionLogList[foundItemIndex].emissionsData;
+        updateEmission = { ...updateEmission, ...newObj };
+        emissionLogList[foundItemIndex].emissionsData = updateEmission;
+      } else {
+        console.log(`Đối tượng cần update không tồn tại`);
+      }
+      // Lưu lại dữ liệu vào file JSON
+      // fs.writeFile(pathP1, JSON.stringify(emissionLogList), (err) => {
+      //   if (err) {
+      //     console.log("Lỗi khi ghi file:", err);
+      //   } else {
+      //     console.log(`Dữ liệu đã được cập nhật thành công.`);
+      //   }
+      // });
+      fs.writeFileSync(pathP1, JSON.stringify(emissionLogList));
+    });
+  }
+
   static findById(id, cb) {
     getEmissionsFromFile((emissionList) => {
       const emission = emissionList.find((element) => element.id === id);
@@ -59,49 +101,3 @@ const Emission = class {
 };
 
 module.exports = Emission;
-
-/**
-this.labels = ["00:00", "00:10", "00:20", "00:30", "00:40", "00:50"];
-    this.emissions = [
-      {
-        emissonId: "1",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "2",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "3",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "4",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "5",
-        data: [0, 22, 23, 62, 51, 30],
-      },
-      {
-        emissonId: "6",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "7",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "8",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "9",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-      {
-        emissonId: "10",
-        data: [0, 0, 0, 0, 0, 0],
-      },
-    ];
- */

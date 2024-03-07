@@ -1,1 +1,16 @@
-[{"id":"1","userName":"Hữu Nghị 80","numberPhone":"0334196187","address":"Trường Hữu Nghị 80","password":"khongbiet"},{"id":"2","userName":"Quách Ngọc Hưng","numberPhone":"0334196187","address":"Số nhà 10 Tổ 18 phường Trần Lãm thành phố Thái Bình","password":"khongbiet"}]
+[
+  {
+    "id": "1",
+    "userName": "Hữu Nghị 80",
+    "numberPhone": "0334196187",
+    "address": "Trường Hữu Nghị 80",
+    "password": "khongbiet"
+  },
+  {
+    "id": "2",
+    "userName": "Quách Ngọc Hưng",
+    "numberPhone": "0334196187",
+    "address": "Số nhà 10 Tổ 18 phường Trần Lãm thành phố Thái Bình",
+    "password": "khongbiet"
+  }
+]

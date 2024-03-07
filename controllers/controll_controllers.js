@@ -19,6 +19,8 @@ const getControlPage = async (req, res) => {
 const updateEmission = async (req, res) => {
   const id = req.params.id;
   const { locat, timeLabel, emissiondt } = req.body;
+
+  Emission.saveLog(id, timeLabel, emissiondt);
   Emission.findById(id, (emission) => {
     let updateEmission = emission;
     updateEmission.location = locat;
@@ -35,7 +37,6 @@ const updateEmission = async (req, res) => {
       updateEmission.emissions
     );
 
-    console.log(updateEmission);
     updateEmis.save();
     res.status(200).render("controll/controll", {
       pageTitle: "Quản lý",

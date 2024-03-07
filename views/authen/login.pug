@@ -13,9 +13,9 @@ block content
         .login_content_body
           form(action="./controll/1" method="post").cover__form
             div.input-group
-              input(type="text" name="tenDangNhap" placeholder="Tên đăng nhập").form-control
+              input(type="text" name="tenDangNhap" placeholder="Tên đăng nhập" required).form-control
             div.input-group
-              input(type="text" name="tenDangNhap" placeholder="Mật khẩu").form-control
+              input(type="password" name="matKhau" placeholder="Mật khẩu" required).form-control
             div.button-login
               button(id="login" type="submit").button--yellow Đăng nhập
           .login_navigation

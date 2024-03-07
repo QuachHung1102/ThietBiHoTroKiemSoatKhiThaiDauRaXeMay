@@ -11,7 +11,7 @@ const {
 
 const authRouter = express.Router();
 
-authRouter.get("/login", getLoginPage);
+authRouter.get("/", getLoginPage);
 authRouter.get("/register", getRegisterPage);
 authRouter.post("/addUser", postAddUser);
 authRouter.post("/update-user/:id", updateUser);

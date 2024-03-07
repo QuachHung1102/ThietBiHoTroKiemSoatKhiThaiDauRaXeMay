@@ -1,17 +1,12 @@
-const { format } = require("express/lib/response");
+const chartDoom1 = document.getElementById("myChart1");
+const chartDoom2 = document.getElementById("myChart2");
+const chartDoom3 = document.getElementById("myChart3");
+const chartDoom4 = document.getElementById("myChart4");
 
-const chart1 = document.getElementById("myChart1");
-const chart2 = document.getElementById("myChart2");
-const chart3 = document.getElementById("myChart3");
-const chart4 = document.getElementById("myChart4");
-
-const labels = emissionData.labels;
-console.log(labels);
-console.log(emissionData);
-
+let labels = emissionData.labels;
 
 //save these to varialble like let chartName1 = new Chart ...
-new Chart(chart1, {
+const chart1 = new Chart(chartDoom1, {
   type: "line",
   data: {
     labels: labels,
@@ -59,7 +54,7 @@ new Chart(chart1, {
   },
 });
 
-new Chart(chart2, {
+const chart2 = new Chart(chartDoom2, {
   type: "line",
   data: {
     labels: labels,
@@ -100,7 +95,7 @@ new Chart(chart2, {
   },
 });
 
-new Chart(chart3, {
+const chart3 = new Chart(chartDoom3, {
   type: "line",
   data: {
     labels: labels,
@@ -145,7 +140,7 @@ new Chart(chart3, {
   },
 });
 
-new Chart(chart4, {
+const chart4 = new Chart(chartDoom4, {
   type: "line",
   data: {
     labels: labels,
@@ -179,16 +174,65 @@ new Chart(chart4, {
   },
 });
 
-//TODO: add function addData(chart, label, data) and removeData(chart)
-//**
- * 
- * @param {*} chart 
- * @param {HH:MM} label time in HH:MM format
- * @param {Number} data number co the la array
- */
-function addData(chart, label, data) {
+// Vậy sẽ tách object ra thành 4 mảng để dễ dàng thao tác.
 
+const random1and100 = (x, y) => {
+  return Math.trunc(Math.random() * 100);
+};
+
+// Data nhận được sẽ có dạng sau
+const data = {
+  label: "03:00",
+  emissions: [
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+    Math.trunc(Math.random() * 100),
+  ],
+};
+
+function addData(chart, newData) {
+  console.log(newData);
+  let i = 0;
+  chart.data.datasets.forEach((dataset) => {
+    dataset.data.shift();
+    dataset.data.push(newData[i++]);
+  });
+  chart.update();
+}
+function changeLabels(label) {
+  chart1.data.labels.shift();
+  chart1.data.labels.push(label);
+  // Ko hiểu sao nhưng update labels cho 1 chart thì nó update cho cả 4
+  chart1.update();
+  chart2.update();
+  chart3.update();
+  chart4.update();
+}
+function addDataToCharts() {
+  let labelUpdate = Math.trunc(Math.random() * 100);
+  let data1 = [random1and100(), random1and100()];
+  // let data1 = data.emissions.slice(0, 2);
+  let data2 = [random1and100(), random1and100(), random1and100()];
+  // let data2 = data.emissions.slice(2, 5);
+  let data3 = [random1and100(), random1and100(), random1and100()];
+  // let data3 = data.emissions.slice(5, 8);
+  let data4 = [random1and100(), random1and100()];
+  // let data4 = data.emissions.slice(8, 10);
+
+  addData(chart1, data1);
+  addData(chart2, data2);
+  addData(chart3, data3);
+  addData(chart4, data4);
+  changeLabels(labelUpdate);
 }
 
-function removeData (chart) {
-}
+setInterval(() => {
+  addDataToCharts();
+}, 3000);

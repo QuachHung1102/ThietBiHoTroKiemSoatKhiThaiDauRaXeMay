@@ -7,7 +7,7 @@ window.addEventListener("load", function () {
 
 function truncateCardTitle() {
   let cardList = document.getElementsByClassName("card-title");
-  console.log(cardList);
+  // console.log(cardList);
   for (let i = 0; i < cardList.length; i++) {
     let text = cardList[i].innerHTML;
     let newText = truncateString(text, 35);
