@@ -191,8 +191,11 @@ function addData(chart, newData) {
   chart.update();
 }
 function changeLabels(label) {
-  chart1.data.labels.shift();
-  chart1.data.labels.push(label);
+  if (chart1.data.labels.at(-1) !== label) {
+    chart1.data.labels.shift();
+    chart1.data.labels.push(label);
+  }
+
   // Ko hiểu sao nhưng update labels cho 1 chart thì nó update cho cả 4
   chart1.update();
   chart2.update();
@@ -219,4 +222,3 @@ function addDataToCharts(data) {
   addData(chart4, data4);
   changeLabels(labelUpdate);
 }
-
