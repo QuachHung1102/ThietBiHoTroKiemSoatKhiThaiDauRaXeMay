@@ -15,3 +15,20 @@
     }
   }
 }
+
+@include responsive("small") {
+  .page {
+    .cover {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cover__content {
+        max-width: 370px;
+        width: 80%;
+        left: 50%;
+      }
+    }
+  }
+}

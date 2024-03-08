@@ -44,10 +44,7 @@ const updateEmission = async (req, res) => {
 
     updateEmis.save();
     Emission.saveLog(id, timeLabel, emissiondt, dateLabel);
-    res.status(200).render("controll/controll", {
-      pageTitle: "Quản lý",
-      emissions: updateEmission,
-    });
+    res.status(200).send(`Updated`);
   });
 };
 

@@ -223,6 +223,20 @@ body {
   margin-top: 1.5rem;
 }
 
+@media screen and (max-width: 576px) {
+  .page .cover {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .page .cover .cover__content {
+    max-width: 370px;
+    width: 80%;
+    left: 50%;
+  }
+}
 .page {
   background-color: #00a9ff;
   width: 100vw;
@@ -246,7 +260,8 @@ body {
   justify-content: space-around;
 }
 .controller__content .controller__title {
-  margin: 1rem 0;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
   text-align: center;
 }
 .controller__content .controller__title h1 {
@@ -292,7 +307,7 @@ body {
   grid-column: 3/4;
 }
 .controller__content .setting__conttent {
-  margin: 1rem 0;
+  margin: 2rem 0;
   display: flex;
   justify-content: space-between;
 }
@@ -344,18 +359,21 @@ body {
   }
 }
 @media screen and (max-width: 768px) {
+  .container {
+    height: 100vh;
+  }
   .controller__content .controller__title {
     margin: 1rem 0;
     text-align: center;
   }
   .controller__content .controller__title h1 {
     color: #000000;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 700;
   }
   .controller__content .controller__title p {
     color: #000000;
-    font-size: 12px;
+    font-size: 1rem;
     font-weight: 400;
   }
   .controller__content .chart__content {
@@ -387,7 +405,6 @@ body {
   .controller__content .setting__conttent {
     margin: 2rem 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
@@ -400,7 +417,7 @@ body {
     font-weight: 600;
     padding: 10px 15px;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 15px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -411,5 +428,21 @@ body {
     color: #ffffff;
     background-color: #f4c150;
     border: 1px solid #f4c150;
+  }
+}
+@media screen and (max-width: 576px) {
+  .controller__content .controller__title {
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .controller__content .controller__title h1 {
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .controller__content .controller__title p {
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 400;
   }
 }/*# sourceMappingURL=main.css.map */
