@@ -5,8 +5,7 @@ const authenticate = async (req, res, next) => {
   const data = req.body;
   try {
     User.findByUserNam(data.tenDangNhap, (user) => {
-      console.log(user);
-      if (data.matKhau == user.password) {
+      if (user && data.matKhau == user.password) {
         return next();
       } else {
         // res.status(404).json({ error: "Sai thông tin đăng nhập!" });
