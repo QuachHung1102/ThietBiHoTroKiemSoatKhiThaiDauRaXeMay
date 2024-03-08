@@ -1,16 +1,1 @@
-[
-  {
-    "id": "1",
-    "userName": "admin",
-    "numberPhone": "114",
-    "address": "Trường Hữu Nghị 80",
-    "password": "admin"
-  },
-  {
-    "id": "2",
-    "userName": "user2",
-    "numberPhone": "113",
-    "address": "blebleble",
-    "password": "user"
-  }
-]
+[{"id":"1","userName":"admin","numberPhone":"114","address":"Trường Hữu Nghị 80","password":"admin"},{"id":"2","userName":"user2","numberPhone":"116","address":"blebleble","password":"user"}]

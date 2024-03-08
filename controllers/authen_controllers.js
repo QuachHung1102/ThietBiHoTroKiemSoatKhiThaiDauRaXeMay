@@ -25,7 +25,7 @@ const updateUser = async (req, res) => {
   const updateUser = new User(id, userName, numberPhone, password);
   updateUser.save();
   // userList = [...userList, user]; // bạn đang tạo ra một mảng mới (một tham chiếu mới) và gán nó lại vào userList.
-  res.status(302).redirect("../login");
+  res.status(302).redirect("../");
 };
 
 module.exports = {

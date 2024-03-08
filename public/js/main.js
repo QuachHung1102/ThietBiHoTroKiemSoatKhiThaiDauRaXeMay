@@ -22,3 +22,14 @@ function truncateString(str, num) {
     return str;
   }
 }
+
+function fetchData() {
+  fetch(`/get-data-to-render/${userID}`) // Gửi yêu cầu GET đến máy chủ để lấy dữ liệu mới
+    .then((response) => response.json())
+    .then((data) => addDataToCharts(data))
+    .catch((error) => console.error("Error fetching data:", error));
+}
+
+setInterval(() => {
+  fetchData();
+}, 15000);

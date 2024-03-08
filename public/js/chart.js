@@ -200,7 +200,6 @@ function changeLabels(label) {
   chart4.update();
 }
 function addDataToCharts(data) {
-  console.log(data.alert);
   if (data.alert == "1") {
     alert(`Xe đang gặp sự cố!`);
   }
@@ -221,13 +220,3 @@ function addDataToCharts(data) {
   changeLabels(labelUpdate);
 }
 
-function fetchData() {
-  fetch(`/get-data-to-render/${userID}`) // Gửi yêu cầu GET đến máy chủ để lấy dữ liệu mới
-    .then((response) => response.json())
-    .then((data) => addDataToCharts(data))
-    .catch((error) => console.error("Error fetching data:", error));
-}
-
-setInterval(() => {
-  fetchData();
-}, 15000);

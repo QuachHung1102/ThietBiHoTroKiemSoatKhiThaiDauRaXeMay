@@ -44,6 +44,10 @@ const updateEmission = async (req, res) => {
 
     updateEmis.save();
     Emission.saveLog(id, timeLabel, emissiondt, dateLabel);
+    // res.status(200).render("controll/controll", {
+    //   pageTitle: "Quản lý",
+    //   emissions: updateEmission,
+    // });
     res.status(200).send(`Updated`);
   });
 };
@@ -52,12 +56,13 @@ const getEmissionToRender = async (req, res) => {
   const id = req.params.id;
   try {
     Emission.findById(id, (emission) => {
+      const location = emission.location;
       const label = emission.labels.at(-1);
       const alert = emission.alert;
       const emissions = emission.emissions.map((e) => {
         return e.data.at(-1);
       });
-      const renderData = { label, emissions, alert };
+      const renderData = { label, emissions, alert, location };
       console.log(renderData);
       res.status(200).json(renderData);
     });
