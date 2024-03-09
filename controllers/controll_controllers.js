@@ -22,7 +22,6 @@ const updateEmission = async (req, res) => {
   const { locat, timeLabel, emissiondt, dateLabel, alert } = req.body;
 
   Emission.findById(id, (emission) => {
-    console.log(`alert = ` + alert);
     let updateEmission = emission;
     updateEmission.location = locat;
     updateEmission.alert = alert;
@@ -63,7 +62,6 @@ const getEmissionToRender = async (req, res) => {
         return e.data.at(-1);
       });
       const renderData = { label, emissions, alert, location };
-      console.log(renderData);
       res.status(200).json(renderData);
     });
   } catch (error) {

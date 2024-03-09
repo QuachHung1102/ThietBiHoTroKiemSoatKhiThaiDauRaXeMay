@@ -1,7 +1,8 @@
 const User = require("../../models/user_model");
 
 const authenticate = async (req, res, next) => {
-  const id = req.params.id;
+  const type = req.params.type;
+  console.log(req.params);
   const data = req.body;
   try {
     User.findByUserNam(data.tenDangNhap, (user) => {
