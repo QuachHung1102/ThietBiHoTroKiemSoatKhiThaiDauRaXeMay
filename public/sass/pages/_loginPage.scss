@@ -8,10 +8,78 @@
   .login_content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 90%;
     .login_content_header {
       margin-top: 1.5rem;
+    }
+    .login_content_body {
+      .login_navigation {
+        a {
+          text-decoration: none;
+          color: red;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200.1) {
+}
+
+@include responsive("extra-large") {
+  .page {
+    .cover {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cover__content {
+        max-width: 55%;
+        width: 80%;
+        left: 50%;
+        height: 70%;
+        .login_content_body {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@include responsive("large") {
+  .page {
+    .cover {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cover__content {
+        max-width: 370px;
+        width: 80%;
+        left: 50%;
+      }
+    }
+  }
+}
+
+@include responsive("medium") {
+  .page {
+    .cover {
+      width: 80%;
+      height: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .cover__content {
+        max-width: 370px;
+        width: 80%;
+        left: 50%;
+      }
     }
   }
 }
