@@ -203,6 +203,7 @@ function changeLabels(label) {
   chart4.update();
 }
 function addDataToCharts(data) {
+  console.log(data);
   if (data.alert == "1") {
     alert(`Xe đang gặp sự cố!`);
   }

@@ -5,15 +5,18 @@ const { rootDir1, rootDir2 } = require("../utilities/path");
 const Emission = require("../models/emission_model");
 
 const getControlPage = async (req, res) => {
-  //TODO: add auth check here
-  //rederect to login if not login
-  const id = req.params.id;
-  Emission.findById(id, (emission) => {
-    res.status(200).render("controll/controll", {
-      pageTitle: "Quản lý",
-      emission,
-      userId: id,
-    });
+  const data = req.body;
+  console.log(data);
+  Emission.findById(data.id, (emission) => {
+    if (data.deviceType === "mobile") {
+      res.status(200).json(renderData);
+    } else if (data.deviceType === "web") {
+      res.status(200).render("controll/controll", {
+        pageTitle: "Quản lý",
+        emission,
+        userId: data.id,
+      });
+    }
   });
 };
 

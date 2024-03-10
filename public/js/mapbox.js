@@ -30,7 +30,7 @@ const geojson = {
       },
       properties: {
         title: "Mapbox",
-        description: "Trường Hữu Nghị 80!",
+        description: `Thiết bị: ${emissionData.id}`,
       },
     },
     // {
