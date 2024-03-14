@@ -6,10 +6,9 @@ const Emission = require("../models/emission_model");
 
 const getControlPage = async (req, res) => {
   const data = req.body;
-  console.log(data);
   Emission.findById(data.id, (emission) => {
     if (data.deviceType === "mobile") {
-      res.status(200).json(renderData);
+      res.status(200).json(emission);
     } else if (data.deviceType === "web") {
       res.status(200).render("controll/controll", {
         pageTitle: "Quản lý",

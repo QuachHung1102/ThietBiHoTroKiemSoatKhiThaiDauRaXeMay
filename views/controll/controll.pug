@@ -41,13 +41,14 @@ block content
           h5.modal-title#staticBackdropLabel Modal title
           button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
         .modal-body
-          form(action="../update-user/2" method="post").cover__form 
+          form(action=`../update-user/${emission.id}` method="post").cover__form 
             div.input-group.mb-3
               input(name="userName" type="text" placeholder="Tên người dùng").form-control
             div.input-group.mb-3
               input(name="numberPhone" type="tel" placeholder="Số điện thoại").form-control
             div.input-group.mb-3
               input(name="password" type="password" placeholder="Nhập khẩu").form-control
+            input(type="hidden" name="deviceType" value="web").form-control  
             .modal-footer
               button.btn.btn-secondary(type="button" data-bs-dismiss="modal") Close 
               button.btn.btn-primary(type="submit" data-bs-dismiss="modal") Save
