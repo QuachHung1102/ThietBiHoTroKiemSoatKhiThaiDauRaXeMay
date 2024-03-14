@@ -64,6 +64,8 @@ Nhiệt độ, Độ ẩm, CO, CO2, LPG, PM2.5, PM1.0, PM10, CO2, NO
 }
 ```
 
+## Call data để update chart
+
 Sau đây là cái API lấy dữ liệu mới để cập nhật dữ liệu vào biểu đồ. Mối 15s thì chạy 1 lần là tốt nhất
 
 ```js
@@ -82,3 +84,23 @@ Dữ liệu trả về có dạng sau
 ```
 
 Khi này ta chỉ cần thêm vào cuối mảng và cắt đầu mảng đi. Nên mảng chỉ cần các giá trị cuối cùng mới đc update thôi (Nhiệt độ, Độ ẩm, CO, CO2, LPG, PM2.5, PM1.0, PM10, CO2, NO)
+
+## Bây giờ là đăng ký
+
+```js
+`/addUser`;
+```
+
+Để mà đăng ký 1 tài khoản thì đẩy cho server 1 cái JSON
+
+```json
+{
+  userName,
+  numberPhone,
+  address,
+  password,
+  deviceType
+}
+```
+
+Ờ hết rồi

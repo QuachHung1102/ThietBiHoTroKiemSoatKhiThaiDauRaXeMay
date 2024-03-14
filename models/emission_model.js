@@ -50,7 +50,7 @@ const Emission = class {
           }
         });
       } else {
-        // this.id = (parseFloat(emissionList.at(-1).id) + 1).toString();
+        this.id = (Number(emissionList.at(-1).id) + 1).toString();
         emissionList.push(this);
         fs.writeFile(pathP, JSON.stringify(emissionList), (err) => {
           if (err) {
@@ -65,7 +65,6 @@ const Emission = class {
 
   static saveLog(id, timeLabel, emissiondt, dateLabel) {
     getEmissionsLogFromFile((emissionLogList) => {
-      console.log(`Đây là update`);
       const foundItemIndex = emissionLogList.findIndex(
         (item) => item.id === id
       );
@@ -79,7 +78,11 @@ const Emission = class {
         updateEmission = { ...updateEmission, ...newObj };
         emissionLogList[foundItemIndex].emissionsData = updateEmission;
       } else {
-        console.log(`Đối tượng cần update không tồn tại`);
+        const newObj = {
+          id: (Number(emissionLogList.at(-1).id) + 1).toString(),
+          emissionsData: {},
+        };
+        emissionLogList.push(newObj);
       }
       // Lưu lại dữ liệu vào file JSON
       // fs.writeFile(pathP1, JSON.stringify(emissionLogList), (err) => {
