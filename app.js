@@ -4,13 +4,14 @@ const fs = require("fs");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const expressHbs = require("express-handlebars");
 
 const { rootRouter } = require("./routes/index_router");
 const { rootDir1, rootDir2 } = require("./utilities/path");
 const { get404Page } = require("./controllers/error");
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 // app.engine(
@@ -32,7 +33,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(rootDir1, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/", rootRouter);// change to /
+app.use("/", rootRouter); // change to /
 app.use(get404Page);
 
 app.listen(port, () => {
