@@ -190,12 +190,15 @@ function addData(chart, newData) {
   });
   chart.update();
 }
-function changeLabels(label) {
+function changeLabels(label, data1, data2, data3, data4) {
   if (chart1.data.labels.at(-1) !== label) {
     chart1.data.labels.shift();
     chart1.data.labels.push(label);
+    addData(chart1, data1);
+    addData(chart2, data2);
+    addData(chart3, data3);
+    addData(chart4, data4);
   }
-
   // Ko hiểu sao nhưng update labels cho 1 chart thì nó update cho cả 4
   chart1.update();
   chart2.update();
@@ -216,10 +219,5 @@ function addDataToCharts(data) {
   let data3 = data.emissions.slice(5, 8);
   // let data4 = [random1and100(), random1and100()];
   let data4 = data.emissions.slice(8, 10);
-
-  addData(chart1, data1);
-  addData(chart2, data2);
-  addData(chart3, data3);
-  addData(chart4, data4);
-  changeLabels(labelUpdate);
+  changeLabels(labelUpdate, data1, data2, data3, data4);
 }
