@@ -39,7 +39,6 @@ const Emission = class {
   save() {
     getEmissionsFromFile((emissionList) => {
       const flag = emissionList.findIndex((emission) => emission.id == this.id);
-      console.log(flag);
       if (flag !== -1) {
         emissionList[flag] = this;
         fs.writeFile(pathP, JSON.stringify(emissionList), (err) => {
@@ -92,8 +91,13 @@ const Emission = class {
       //     console.log(`Dữ liệu đã được cập nhật thành công.`);
       //   }
       // });
-      fs.writeFileSync(pathP1, JSON.stringify(emissionLogList));
-      console.log(`Cập nhật emissionsLogSave thành công`);
+      fs.writeFile(pathP1, JSON.stringify(emissionLogList), (err) => {
+        if (err) {
+          console.log("Lỗi khi ghi logFile:", err);
+        } else {
+          console.log(`Dữ liệu đã được cập nhật thành công.`);
+        }
+      });
     });
   }
 
@@ -101,6 +105,25 @@ const Emission = class {
     getEmissionsFromFile((emissionList) => {
       const emission = emissionList.find((element) => element.id === id);
       cb(emission);
+    });
+  }
+
+  static findAll(cb) {
+    getEmissionsFromFile((emissionList) => {
+      cb(emissionList);
+    });
+  }
+
+  static findAllLog(cb) {
+    getEmissionsLogFromFile((listLog) => {
+      cb(listLog);
+    });
+  }
+
+  static findLogById(id, cb) {
+    getEmissionsLogFromFile((listLog) => {
+      const log = listLog.find((element) => element.id === id);
+      cb(log);
     });
   }
 };
