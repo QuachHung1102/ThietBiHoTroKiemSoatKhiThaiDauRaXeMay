@@ -103,4 +103,8 @@ Khi này ta chỉ cần thêm vào cuối mảng và cắt đầu mảng đi. N�
 }
 ```
 
-Ờ hết rồi
+# Cảnh báo
+
+Trong các file json không bao giờ được phép can thiệp vào giá trị của admin. Nếu không sẽ gây lỗi ghi dữ liệu.
+
+Trong các file luôn có các object có id:1 chứa thông tin của admin. Nếu các object này mất sẽ không có mốc thứ tự để tạo id cho các user tiếp theo

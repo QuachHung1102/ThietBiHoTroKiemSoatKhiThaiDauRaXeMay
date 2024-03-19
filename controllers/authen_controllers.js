@@ -64,7 +64,14 @@ const getRegisterPage = async (req, res) => {
 };
 
 const postAddUser = async (req, res) => {
-  const { userName, numberPhone, address, password, deviceType } = req.body;
+  const {
+    userName,
+    numberPhone,
+    address,
+    password,
+    xacNhanMatKhau,
+    deviceType,
+  } = req.body;
   try {
     User.findByUserNam(userName, (user) => {
       if (user) {
@@ -78,21 +85,33 @@ const postAddUser = async (req, res) => {
             );
         }
       } else {
-        const product = new User(
-          null,
-          userName,
-          numberPhone,
-          address,
-          password
-        );
-        const newEmis = new Emission(...fakeData);
-        product.save();
-        newEmis.save();
-        Emission.saveLog({ id: null });
-        if (deviceType === "mobile") {
-          res.status(201).send("Created");
-        } else if (deviceType === "web") {
-          res.status(201).redirect("./");
+        if (password === xacNhanMatKhau) {
+          const product = new User(
+            null,
+            userName,
+            numberPhone,
+            address,
+            password
+          );
+          const newEmis = new Emission(...fakeData);
+          product.save();
+          newEmis.save();
+          Emission.saveLog({ id: null });
+          if (deviceType === "mobile") {
+            res.status(201).send("Created");
+          } else if (deviceType === "web") {
+            res.status(201).redirect("./");
+          }
+        } else {
+          if (deviceType === "mobile") {
+            res.status(409).send(`Mật khẩu xác nhận không khớp!`);
+          } else if (deviceType === "web") {
+            res
+              .status(409)
+              .send(
+                '<script>alert("Mật khẩu xác nhận không khớp!"); window.location.href = "/";</script>'
+              );
+          }
         }
       }
     });
