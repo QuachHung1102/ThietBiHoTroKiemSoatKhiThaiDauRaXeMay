@@ -47,5 +47,12 @@
     "numberPhone": "118",
     "address": "Ở đâu chả biết",
     "password": "user7"
+  },
+  {
+    "id": "8",
+    "userName": "user8",
+    "numberPhone": "119",
+    "address": "Ở đâu chả biết",
+    "password": "user8"
   }
 ]

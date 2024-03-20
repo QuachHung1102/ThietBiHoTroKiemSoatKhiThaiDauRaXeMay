@@ -64,40 +64,41 @@ const updateEmission = async (req, res) => {
 
       // updateEmis.save();
       // Emission.saveLog(id, timeLabel, emissiondt, dateLabel);
-      res.status(200).send(`Updated`);
-    });
 
-    Emission.findAll((emissionList) => {
-      emissionList.map((emissionEle) => {
-        emissionEle.location = updateEmis.location;
-        emissionEle.labels = updateEmis.labels;
-        emissionEle.emissions = updateEmis.emissions;
-        emissionEle.alert = updateEmis.alert;
-        // updateEmis.save();
-        // Emission.saveLog(emissionEle.id, timeLabel, emissiondt, dateLabel);
+      console.log(updateEmis);
+      Emission.findAll((emissionList) => {
+        emissionList.map((emissionEle) => {
+          emissionEle.location = updateEmis.location;
+          emissionEle.labels = updateEmis.labels;
+          emissionEle.emissions = updateEmis.emissions;
+          emissionEle.alert = updateEmis.alert;
+          // updateEmis.save();
+          // Emission.saveLog(emissionEle.id, timeLabel, emissiondt, dateLabel);
+        });
+        fs.writeFile(pathP, JSON.stringify(emissionList), (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`Update success emission`);
+          }
+        });
       });
-      fs.writeFile(pathP, JSON.stringify(emissionList), (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Update success emission all`);
-        }
+      Emission.findAllLog((listLog) => {
+        const newObj = {
+          [`${timeLabel} - ${dateLabel}`]: emissiondt,
+        };
+        listLog.map((logItem) => {
+          logItem.emissionsData = { ...logItem.emissionsData, ...newObj };
+        });
+        fs.writeFile(pathP1, JSON.stringify(listLog), (err) => {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`Update success emission log`);
+          }
+        });
       });
-    });
-    Emission.findAllLog((listLog) => {
-      const newObj = {
-        [`${timeLabel} - ${dateLabel}`]: emissiondt,
-      };
-      listLog.map((logItem) => {
-        logItem.emissionsData = { ...logItem.emissionsData, ...newObj };
-      });
-      fs.writeFile(pathP1, JSON.stringify(listLog), (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Update success emission all`);
-        }
-      });
+      res.status(200).send(`Updated`);
     });
   } catch (error) {
     res.status(500).send(`Error: ${error}`);
