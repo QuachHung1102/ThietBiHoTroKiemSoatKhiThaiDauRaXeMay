@@ -58,7 +58,7 @@ module.exports = class User {
       cb(user);
     });
   }
-  // getProductById
+  // getProductByUserName
   static findByUserNam(userName, cb) {
     getUserFromFile((userList) => {
       const user = userList.find((element) => element.userName === userName);

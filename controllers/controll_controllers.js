@@ -6,6 +6,8 @@ const pathP = path.join(rootDir1, "data", "emissionsData.json");
 const pathP1 = path.join(rootDir1, "data", "emissonsLogSave.json");
 
 const Emission = require("../models/emission_model");
+const User = require("../models/user_model");
+
 
 const getControlPage = async (req, res) => {
   const data = req.body;
@@ -34,6 +36,10 @@ const updateEmission = async (req, res) => {
 
   try {
     let updateEmis;
+    let userNumberPhone;
+    User.findById(id, (user) => {
+      userNumberPhone = user.numberPhone;
+    })
     Emission.findById(id, (emission) => {
       let updateEmission = emission;
       updateEmission.location = locat;
@@ -98,7 +104,7 @@ const updateEmission = async (req, res) => {
           }
         });
       });
-      res.status(200).send(`Updated`);
+      res.status(200).send(`Updated: ${userNumberPhone}`);
     });
   } catch (error) {
     res.status(500).send(`Error: ${error}`);
