@@ -165,7 +165,7 @@ const chart4 = new Chart(chartDoom4, {
       },
       {
         label: "HC",
-        data: emissionData.emissions[9].data,
+        data: emissionData.emissions[10].data,
         backgroundColor: ["rgba(255, 192, 203, 0.2)"],
         borderColor: ["#758694"],
         borderWidth: 1,
