@@ -38,7 +38,7 @@ module.exports = class User {
           }
         });
       } else {
-        this.id = (parseFloat(userList.at(-1).id) + 1).toString();
+        this.id = userList.at(-1) ? (parseFloat(userList.at(-1).id) + 1).toString() : "1";
         userList.push(this);
         fs.writeFile(pathP, JSON.stringify(userList), (err) => {
           if (err) {

@@ -11,7 +11,7 @@ const authenticate = async (req, res, next) => {
       } else {
         // res.status(404).json({ error: "Sai thông tin đăng nhập!" });
         if (data.deviceType === "mobile") {
-          res.status(404).json({ error: "Sai thông tin đăng nhập!" });
+          res.status(404).json({ error: "Login information is incorrect!" });
         } else if (data.deviceType === "web") {
           res.status(404).render("404", {
             pageTitle: "Sai thông tin đăng nhập",

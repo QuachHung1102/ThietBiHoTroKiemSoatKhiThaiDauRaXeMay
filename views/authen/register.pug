@@ -8,27 +8,27 @@ block content
     .cover 
       .login_content.cover__content
         .login_content_header
-          h1 Web quản lý
-          p Thiết bị hỗ trợ kiểm soát khí thải đầu ra xe máy
+          h1 Management
+          p Motorbike exhaust managing device
         .login_content_body
           form(action="./addUser" method="post").cover__form
             div.input-group
-              input(type="text" name="userName" placeholder="Tên người dùng" required).form-control
+              input(type="text" name="userName" placeholder="User name" required).form-control
             div.input-group
-              input(type="tel" name="numberPhone" placeholder="Số điện thoại" required).form-control
+              input(type="tel" name="numberPhone" placeholder="Phone" required).form-control
             div.input-group
-              input(type="text" name="address" placeholder="Địa chỉ" required).form-control
+              input(type="text" name="address" placeholder="Address" required).form-control
             div.input-group
-              input(type="password" name="password" placeholder="Mật khẩu" required).form-control
+              input(type="password" name="password" placeholder="Passwords" required).form-control
             div.input-group
-              input(type="password" name="xacNhanMatKhau" placeholder="Xác nhận mật khẩu" required).form-control
+              input(type="password" name="xacNhanMatKhau" placeholder="Passwords Confirm" required).form-control
             input(type="hidden" name="deviceType" value="web").form-control  
             div.button-login
-              button(id="login" type="submit").button--yellow Đăng ký
+              button(id="login" type="submit").button--yellow Sign up
           .login_navigation
-            p Đã có tài khoản
+            p Have an account?
               span 
-                a(href="./") Đăng nhập
+                a(href="./") Login
   script(src="/js/jquery-3.6.0.js") 
   script(src="/js/jquery.waypoints.min.js") 
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

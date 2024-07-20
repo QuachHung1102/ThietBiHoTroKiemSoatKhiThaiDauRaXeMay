@@ -12,7 +12,7 @@ const chart1 = new Chart(chartDoom1, {
     labels: labels,
     datasets: [
       {
-        label: "Nhiệt độ",
+        label: "Temperature",
         data: emissionData.emissions[0].data,
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)", // Màu đỏ
@@ -33,7 +33,7 @@ const chart1 = new Chart(chartDoom1, {
         borderWidth: 1,
       },
       {
-        label: "Độ ẩm",
+        label: "Humidity",
         data: emissionData.emissions[1].data,
         backgroundColor: [
           "rgba(54, 162, 235, 0.2)", // Màu xanh dương
@@ -163,6 +163,13 @@ const chart4 = new Chart(chartDoom4, {
         borderColor: ["#FF00FF"],
         borderWidth: 1,
       },
+      {
+        label: "HC",
+        data: emissionData.emissions[9].data,
+        backgroundColor: ["rgba(255, 192, 203, 0.2)"],
+        borderColor: ["#758694"],
+        borderWidth: 1,
+      },
     ],
   },
   options: {
@@ -208,7 +215,7 @@ function changeLabels(label, data1, data2, data3, data4) {
 function addDataToCharts(data) {
   console.log(data);
   if (data.alert == "1") {
-    alert(`Xe đang gặp sự cố!`);
+    alert(`The car is experiencing issues!`);
   }
   let labelUpdate = data.label;
   // let data1 = [random1and100(), random1and100()];

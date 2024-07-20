@@ -49,7 +49,7 @@ const Emission = class {
           }
         });
       } else {
-        this.id = (Number(emissionList.at(-1).id) + 1).toString();
+        this.id = emissionList.at(-1) ? (Number(emissionList.at(-1).id) + 1).toString() : "1";
         emissionList.push(this);
         fs.writeFile(pathP, JSON.stringify(emissionList), (err) => {
           if (err) {
@@ -78,7 +78,7 @@ const Emission = class {
         emissionLogList[foundItemIndex].emissionsData = updateEmission;
       } else {
         const newObj = {
-          id: (Number(emissionLogList.at(-1).id) + 1).toString(),
+          id: emissionLogList.at(-1) ? (Number(emissionLogList.at(-1).id) + 1).toString() : "1",
           emissionsData: {},
         };
         emissionLogList.push(newObj);

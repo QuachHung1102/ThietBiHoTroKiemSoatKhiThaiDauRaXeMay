@@ -8,8 +8,8 @@ block content
     .cover 
       .login_content.cover__content
         .login_content_header
-          h1 Web quản lý
-          p Thiết bị hỗ trợ kiểm soát khí thải đầu ra xe máy
+          h1 Management
+          p Motorbike exhaust managing device
         .login_content_body
           form(action="./controll" method="post").cover__form
             div.input-group
@@ -18,11 +18,11 @@ block content
               input(type="password" name="matKhau" placeholder="Mật khẩu" required).form-control
             input(type="hidden" name="deviceType" value="web").form-control  
             div.button-login
-              button(id="login" type="submit").button--yellow Đăng nhập
+              button(id="login" type="submit").button--yellow Login
           .login_navigation
-            p Chưa có tài khoản
+            p No account yet?
               span 
-                a(href="./register") Đăng ký
+                a(href="./register") Sign up
   script(src="/js/jquery-3.6.0.js") 
   script(src="/js/jquery.waypoints.min.js") 
   script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
